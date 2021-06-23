@@ -535,7 +535,7 @@ def _get_secret_path_metadata(path):
                 cache_content[ckey][path] = ret
                 write_cache(cache_content)
             else:
-                raise response.json()
+                raise salt.exceptions.CommandExecutionError(response.json())
         except Exception as err:  # pylint: disable=broad-except
             log.error("Failed to get secret metadata %s: %s", type(err).__name__, err)
     return ret
